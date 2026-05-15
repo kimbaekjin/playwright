@@ -1,4 +1,5 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
+import { clickAndWaitResponse } from '../utils/wait';
 
 export class NaverSearchPage {
   constructor(private page: Page) {}
@@ -8,15 +9,42 @@ export class NaverSearchPage {
   }
 
   async search(keyword: string) {
-    await this.page
-      .getByRole('combobox', { name: '검색어를 입력해 주세요' })
-      .fill(keyword);
+    const input = this.page.getByRole('combobox', {
+      name: '검색어를 입력해 주세요'
+    });
 
-    await this.page.getByRole('button', { name: '검색', exact: true }).click();
+    const searchButton = this.page.getByRole('button', {
+      name: '검색',
+      exact: true
+    });
 
-    const page1Promise = this.page.waitForEvent('popup');
-    await this.page.getByRole('button', { name: '신규장소 등록' }).click();
-    const page1 = await page1Promise;
-    await page1.getByRole('button', { name: '확인' }).click();
+    await input.fill(keyword);
+
+    // 🔥 핵심: API sync
+    await clickAndWaitResponse(
+      this.page,
+      searchButton,
+      'graphql' // ← 실제 네트워크 기준으로 바꾸면 됨
+    );
+  }
+
+  async openNewPlacePopup() {
+    const popupPromise = this.page.waitForEvent('popup');
+
+    const button = this.page.getByRole('button', {
+      name: '신규장소 등록'
+    });
+
+    await button.click();
+
+    const popup = await popupPromise;
+
+    await expect(
+      popup.getByRole('button', { name: '확인' })
+    ).toBeVisible();
+
+    await popup.getByRole('button', { name: '확인' }).click();
+
+    return popup;
   }
 }
