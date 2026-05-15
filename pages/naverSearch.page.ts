@@ -26,25 +26,12 @@ export class NaverSearchPage {
       searchButton,
       'graphql' // ← 실제 네트워크 기준으로 바꾸면 됨
     );
-  }
 
-  async openNewPlacePopup() {
-    const popupPromise = this.page.waitForEvent('popup');
-
-    const button = this.page.getByRole('button', {
-      name: '신규장소 등록'
+    const filterBtn = this.page.getByRole('button', {
+         name: '전체필터'
     });
 
-    await button.click();
-
-    const popup = await popupPromise;
-
-    await expect(
-      popup.getByRole('button', { name: '확인' })
-    ).toBeVisible();
-
-    await popup.getByRole('button', { name: '확인' }).click();
-
-    return popup;
+    await filterBtn.waitFor();   // 핵심 안정화
+    await filterBtn.click();
   }
 }
