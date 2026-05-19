@@ -1,7 +1,7 @@
 import { Page, Locator, expect, Response } from '@playwright/test';
 
 /**
- * API + click 동기화 (기본)
+ * API + click 동기화
  */
 export async function clickAndWaitResponse(
   page: Page,
@@ -20,7 +20,7 @@ export async function clickAndWaitResponse(
 }
 
 /**
- * API + UI까지 같이 보장 (실무용)
+ * API + UI
  */
 export async function clickAndWaitUI(
   page: Page,
@@ -40,7 +40,7 @@ export async function clickAndWaitUI(
 }
 
 /**
- * GraphQL 전용 wait (네이버/SPA 대응)
+ * GraphQL 전용 wait
  */
 export async function waitGraphQL(
   page: Page,

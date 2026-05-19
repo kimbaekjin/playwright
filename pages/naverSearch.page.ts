@@ -23,14 +23,14 @@ export class NaverSearchPage {
 
     await input.fill(keyword);
 
-    // 🔥 검색 API sync
+    // 검색 API sync
     await clickAndWaitResponse(
       this.page,
       searchButton,
       'graphql'
     );
 
-    // 🔥 전체필터 진입
+    // 전체필터 진입
     const filterBtn = this.page.getByRole('button', {
       name: '전체필터'
     });
@@ -45,7 +45,6 @@ export class NaverSearchPage {
     async applyPlaceFilters(options: string[]) {
 
   const panel = this.page.locator('.J2cKR.cZguM.WNLhr');
-  // 👉 핵심: 필터 영역으로 정확히 scope 제한
 
   await expect(panel).toBeVisible();
 
@@ -54,7 +53,7 @@ export class NaverSearchPage {
     const item = panel.getByRole('button', {
       name: option
     });
-
+  
     await item.scrollIntoViewIfNeeded();
     await item.click();
   }
