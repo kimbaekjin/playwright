@@ -1,7 +1,7 @@
 import { Page, expect, Locator } from '@playwright/test';
-import { clickAndWaitResponse } from '../utils/wait';
+import { clickAndWaitResponse } from '../../utils/wait';
 
-export class NaverSearchPage {
+export class restaurantPage {
   // 생성자에서 private page를 선언하면 this.page로 바로 접근 가능합니다.
   constructor(private readonly page: Page) {}
 
@@ -18,7 +18,7 @@ export class NaverSearchPage {
   async search(keyword: string) {
     await this.searchInput.fill(keyword);
 
-    // API 통신을 기다리는 유틸리티 함수 유지 (잘 만드셨습니다!)
+    // API 통신을 기다리는 유틸리티 함수 유지
     await clickAndWaitResponse(this.page, this.searchButton, 'graphql');
 
     await expect(this.filterBtn).toBeVisible();

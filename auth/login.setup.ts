@@ -7,7 +7,7 @@ setup('save login state', async ({ page }) => {
   const userPw = process.env.NAVER_PASSWORD;
 
   if (!userId || !userPw) {
-    throw new Error('🚨 환경 변수 오류: .env 파일에 NAVER_ID 또는 NAVER_PASSWORD가 없습니다.');
+    throw new Error('환경 변수 오류: .env 파일에 NAVER_ID 또는 NAVER_PASSWORD가 없습니다.');
   }
 
   // 2. 로그인 페이지 이동
@@ -16,7 +16,7 @@ setup('save login state', async ({ page }) => {
   // 3. 보안 정보 입력 (하드코딩 제거)
   await page.fill('#id', userId);
   await page.fill('#pw', userPw);
-  await page.getByRole('button', { name: '로그인' }).click();
+  await page.locator('#log\\.login').click();
 
   // 4. 로그인 완료 대기
   await page.waitForURL('https://www.naver.com/**');
