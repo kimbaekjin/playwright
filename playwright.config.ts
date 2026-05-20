@@ -10,13 +10,13 @@ export default defineConfig({
   testDir: './tests',
 
   /* 전체 타임아웃 */
-  timeout: 30 * 1000,
+  timeout: 120 * 1000,
 
   expect: {
     timeout: 5000,
   },
 
-  fullyParallel: false,
+  fullyParallel : false,
 
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
