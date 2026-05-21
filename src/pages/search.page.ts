@@ -19,7 +19,7 @@ export class SearchPage {
       )
       .first();
   }
-
+  
   async search(keyword: string) {
     await this.executeSearch(keyword);
 
@@ -63,12 +63,19 @@ export class SearchPage {
   }
 
   async captureResult(name: string) {
-    await expect(
-      this.resultArea
-    ).toBeVisible();
+  const area = this.resultArea;
+  
+  await area.scrollIntoViewIfNeeded();
 
-    await this.resultArea.screenshot({
-      path: `screenshots/${name}.png`
-    });
-  }
+  await area.waitFor({
+    state: 'visible'
+  });
+
+  // 레이아웃 안정화
+  await this.page.waitForTimeout(2000);
+
+  await area.screenshot({
+    path: `screenshots/${name}.png`
+  });
+}
 }

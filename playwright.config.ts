@@ -9,14 +9,15 @@ dotenv.config({
 export default defineConfig({
   testDir: './tests',
 
-  /* 전체 타임아웃 */
+  globalSetup: require.resolve('./auth/login.setup'), // ⭐ 핵심 수정
+
   timeout: 120 * 1000,
 
   expect: {
     timeout: 5000,
   },
 
-  fullyParallel : false,
+  fullyParallel: false,
 
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -24,7 +25,6 @@ export default defineConfig({
 
   reporter: 'html',
 
-  /* 공통 브라우저/환경 설정 */
   use: {
     baseURL: process.env.BASE_URL ?? 'https://www.naver.com',
 
@@ -35,9 +35,7 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
 
-  /* 프로젝트 분리 (실무 핵심 구조) */
   projects: [
-    /* 로그인 상태 테스트 */
     {
       name: 'logged-in-tests',
       testDir: './tests/login',
@@ -48,7 +46,6 @@ export default defineConfig({
       },
     },
 
-    /* 비로그인 상태 테스트 */
     {
       name: 'guest-tests',
       testDir: './tests/guest',

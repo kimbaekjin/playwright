@@ -12,7 +12,10 @@ test.describe('data driven search test', () => {
 
       const search = new SearchPage(page);
 
-      await page.goto(process.env.BASE_URL!);
+      await page.goto(process.env.BASE_URL!, {
+        waitUntil: 'domcontentloaded',
+        timeout: 60000
+      });
 
       await search.search(keyword);
 
