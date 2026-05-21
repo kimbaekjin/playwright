@@ -6,9 +6,9 @@
     "baseUrl": ".",
 
     "paths": {
-      "@pages/*": ["pages/*"],
-      "@fixtures/*": ["fixtures/*"],
-      "@utils/*": ["utils/*"],
+      "@pages/*": ["src/pages/*"],
+      "@fixtures/*": ["src/fixtures/*"],
+      "@utils/*": ["src/utils/*"],
       "@data/*": ["data/*"],
       "@auth/*": ["auth/*"]
     },

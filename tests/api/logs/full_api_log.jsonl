@@ -1,0 +1,7 @@
+{"timestamp":"2026-05-21T06:38:47.960Z","action":"Initial Load","url":"https://ssl.pstatic.net/sstatic/search/local/css/maps_openapi_https_150716.css","status":200}
+{"timestamp":"2026-05-21T06:38:50.517Z","action":"Initial Load","url":"https://ssl.pstatic.net/sstatic.map/openapi/maps3.js?_v_place_3.40.4","status":200}
+{"timestamp":"2026-05-21T06:38:51.409Z","action":"Initial Load","url":"https://stage-p-api.place.naver.com/graphql","status":200}
+{"timestamp":"2026-05-21T06:38:51.880Z","action":"Initial Load","url":"https://stest.search.naver.com/p/qra/1/search.naver?abt=&api_type=nd&debug=1&enc_pageid=IggCADeCULiqAAAAOTFSks6gwkj5HNDGdtxU9CYh5uHxsQarhBD93Niw56g%3D&enlu_query=IggCACSDULhJAAAACIMVzvrsoLy0KkEH3aJNFLoBBNZoAbshgLDuHILCtxY5oV%2FYghUeZy%2BMaueYnj6jzwDSLVTLhRQz%2F%2FQ9kA%2BKFlRH6J1rX8ov%2BzI5kHGqplLLNWOsmVD68kzAd1UXfz6kcnCnaV8Bi0CsVs0gBZNiktzn41MxY398zwR8VmauKr5vP2Pvj9WkEmxDkwznPo1pTRxV13%2BqgoHdAxiK%2BD7ZQiQzAHjtXnsO%2FrzGRY6Ag2E1qIvjqJIeDDqaLfdJ7NZtRupu3NrFnJo5e96XGfrVsZLoz7gV7mTqYW05saSYuvRAqfVgcRW2gcC7wZt8VSaECeCvuIAirsaMOekNsP1uvrD59QQJVbzaP4I3Q%2FAV364%3D&lgl_rcode=&query=%EC%9D%8C%EC%8B%9D%EC%A0%90&ssc=tab.nx.all&x_qra=","status":200}
+{"timestamp":"2026-05-21T06:39:37.850Z","action":"A - 포장주문","url":"https://stage-p-api.place.naver.com/graphql","status":200}
+{"timestamp":"2026-05-21T06:39:38.519Z","action":"A - 24시간영업","url":"https://stage-p-api.place.naver.com/graphql","status":200}
+{"timestamp":"2026-05-21T06:39:38.916Z","action":"A - 포장","url":"https://stage-p-api.place.naver.com/graphql","status":200}
