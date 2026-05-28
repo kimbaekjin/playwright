@@ -1,81 +1,17 @@
-import { Page, expect } from '@playwright/test';
+// src/pages/search.page.ts
+import { Page } from '@playwright/test';
+import { NetworkRecorder } from '../api/network.recorder';
 
 export class SearchPage {
-  constructor(private readonly page: Page) {}
+  readonly page: Page;
+  readonly recorder: NetworkRecorder;
 
-  private get searchInput() {
-    return this.page.locator('#nx_query');
+  constructor(page: Page) {
+    this.page = page;
+    this.recorder = new NetworkRecorder(page);
   }
 
-  private get searchButton() {
-    return this.page.locator('.bt_search');
+  async navigate(url: string) {
+    await this.page.goto(url);
   }
-
-  private get resultArea() {
-    return this.page
-      .locator('#place-main-section-root')
-      .or(
-        this.page.locator('#loc-main-section-root')
-      )
-      .first();
-  }
-  
-  async search(keyword: string) {
-    await this.executeSearch(keyword);
-
-    await this.waitForResult(keyword);
-  }
-
-  private async executeSearch(keyword: string) {
-    await this.searchInput.waitFor({
-      state: 'visible'
-    });
-
-    await this.searchInput.fill(keyword);
-
-    await this.searchButton.click();
-  }
-
-  private async waitForResult(keyword: string) {
-    while (true) {
-      try {
-        await expect(
-          this.resultArea
-        ).toBeVisible({
-          timeout: 3000
-        });
-
-        console.log('결과 영역 노출 완료');
-
-        return;
-      } catch {
-        console.log(
-          '결과 영역 미노출 → 새로고침 후 재검색'
-        );
-
-        await this.page.reload({
-          waitUntil: 'domcontentloaded'
-        });
-
-        await this.executeSearch(keyword);
-      }
-    }
-  }
-
-  async captureResult(name: string) {
-  const area = this.resultArea;
-  
-  await area.scrollIntoViewIfNeeded();
-
-  await area.waitFor({
-    state: 'visible'
-  });
-
-  // 레이아웃 안정화
-  await this.page.waitForTimeout(2000);
-
-  await area.screenshot({
-    path: `screenshots/${name}.png`
-  });
-}
 }
