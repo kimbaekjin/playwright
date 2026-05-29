@@ -2,7 +2,7 @@
 import { test } from '@playwright/test';
 import { SearchPage } from '../../src/pages/search.page';
 
-test('검색 및 데이터 매핑 캡처 테스트', async ({ page }) => {
+test('테스트', async ({ page }) => {
   const searchPage = new SearchPage(page);
   
   // 1. 레코딩 활성화

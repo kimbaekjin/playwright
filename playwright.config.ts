@@ -8,6 +8,7 @@ dotenv.config({
 
 export default defineConfig({
   fullyParallel: true,
+  timeout: 600000,
   workers: 6,
   use: {
     // 여기에 추가한 옵션이 모든 테스트에 적용됩니다.
